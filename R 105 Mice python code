@@ -1,0 +1,20 @@
+n = int(input())
+mice_pos = list(map(int, input().split()))
+holes_pos = list(map(int, input().split()))
+
+# sort the positions of mice and holes in ascending order
+mice_pos.sort()
+holes_pos.sort()
+
+# assign each mouse to its corresponding hole based on their positions in sorted order
+assignments = {}
+for i in range(n):
+    assignments[mice_pos[i]] = holes_pos[i]
+
+# calculate the time taken by each mouse to reach its assigned hole
+max_time = 0
+for i in range(n):
+    time = abs(mice_pos[i] - assignments[mice_pos[i]])
+    max_time = max(max_time, time)
+
+print(max_time)
