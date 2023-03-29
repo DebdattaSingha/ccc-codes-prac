@@ -1,0 +1,28 @@
+n = int(input())
+a = list(map(int, input().split()))
+m = int(input())
+c = list(map(int, input().split()))
+
+# sort the array A in ascending order
+a.sort()
+
+# binary search function to check if an element is present in A
+def binary_search(arr, x):
+    l = 0
+    r = len(arr) - 1
+    while l <= r:
+        mid = (l + r) // 2
+        if arr[mid] == x:
+            return True
+        elif arr[mid] < x:
+            l = mid + 1
+        else:
+            r = mid - 1
+    return False
+
+# check each candy requirement and print "Happy Halloween!" or "Tricky!"
+for i in range(m):
+    if binary_search(a, c[i]):
+        print("Happy Halloween!")
+    else:
+        print("Tricky!")
